@@ -39,7 +39,7 @@ export const boxSlice = createSlice({
   initialState,
   reducers: {
     updateBoxValue: (state, action) => {
-
+      state.value = action.payload;
     }
   }
 });
