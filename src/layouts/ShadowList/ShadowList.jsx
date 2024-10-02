@@ -6,6 +6,8 @@ import { nanoid } from "nanoid";
 export default function ShadowList() {
 
   const shadows = useSelector(state => state.shadow);
+  console.log(shadows);
+  
   const dispatch = useDispatch();
 
   return (
