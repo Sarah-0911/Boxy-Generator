@@ -39,8 +39,10 @@ export const boxSlice = createSlice({
   initialState,
   reducers: {
     updateBoxValue: (state, action) => {
-      const element = state.find(el => el.inputNumber === action.payload.inputNumber);
-      element.value = action.payload.value;
+      const inputToUpdate = state.find(input => input.inputNumber === action.payload.inputNumber);
+      if (inputToUpdate) {
+        inputToUpdate.value = action.payload.value;
+      }
     }
   }
 });
