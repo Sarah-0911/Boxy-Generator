@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { removeShadow } from "../../features/shadowsSlice";
 import chevron from "../../assets/chevron.svg";
 import ShadowRange from "./ShadowRange";
 import ShadowColorPicker from "./ShadowColorPicker";
-import { useDispatch } from "react-redux";
-import { removeShadow } from "../../features/shadowsSlice";
+import ShadowCheckbox from "./ShadowCheckbox";
 
 function Shadow({ panelNumber, shadow }) {
 
@@ -33,7 +34,6 @@ function Shadow({ panelNumber, shadow }) {
     : null
   ));
 
-
   return (
       <li className="border-b bg-gray-50 border-gray-300">
         <button onClick={() => setToggleShadow(!toggleShadow)} className="py-4 px-6 w-full flex justify-between items-center hover:bg-gray-100">
@@ -43,8 +43,8 @@ function Shadow({ panelNumber, shadow }) {
         {toggleShadow &&
           <>
             <div className="flex items-end px-6 py-4">
-              {/* <CheckBox /> */}
-              {/* <CheckBox /> */}
+              <ShadowCheckbox name={"active"} shadowID={shadow.id} />
+              <ShadowCheckbox name={"inset"} shadowID={shadow.id} />
               <button
               className="ml-auto text-sm bg-red-600 text-slate-100 hover:bg-red-700 py-2 px-3 rounded"
               onClick={() => dispatch(removeShadow(shadow.id))}

@@ -104,7 +104,8 @@ export const shadowsSlice = createSlice({
       // l'inputNumber (ou autre identifiant unique) s'assure de mettre à jour le bon input dans le state global.
     },
     updateCheckbox: (state, action) => {
-
+      const currentShadow = state.find(shadow => shadow.id === action.payload.shadowID);
+      currentShadow[action.payload.name] = !currentShadow[action.payload.name];
     }
   }
 });
