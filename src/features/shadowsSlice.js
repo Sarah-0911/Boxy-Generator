@@ -45,12 +45,12 @@ const initialState = [
   }
 ]
 
-export const shadowSlice = createSlice({
-  name: 'shadow',
+export const shadowsSlice = createSlice({
+  name: 'shadows',
   initialState,
   reducers: {
     removeShadow: (state, action) => {
-      // state = state.id !== action.payload;
+      return state.filter(shadow => shadow.id !== action.payload)
     },
     addShadow: (state, action) => {
       state.push( {
@@ -104,5 +104,5 @@ export const shadowSlice = createSlice({
   }
 });
 
-export const { removeShadow, addShadow, updateShadowValue, updateCheckbox } = shadowSlice.actions;
-export default shadowSlice.reducer;
+export const { removeShadow, addShadow, updateShadowValue, updateCheckbox } = shadowsSlice.actions;
+export default shadowsSlice.reducer;

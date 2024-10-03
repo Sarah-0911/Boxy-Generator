@@ -2,10 +2,19 @@ import { useState, useEffect } from "react";
 import chevron from "../../assets/chevron.svg";
 import ShadowRange from "./ShadowRange";
 import ShadowColorPicker from "./ShadowColorPicker";
+import { useDispatch } from "react-redux";
+import { removeShadow } from "../../features/shadowsSlice";
 
 function Shadow({ panelNumber, shadow }) {
 
-  const [toggleShadow, setToggleShadow] = useState(true);
+  const [toggleShadow, setToggleShadow] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(panelNumber === 1) {
+      setToggleShadow(true)
+    }
+  },[])
 
 
   const shadowInputs = shadow.inputs.map((input, index) => (
@@ -18,7 +27,7 @@ function Shadow({ panelNumber, shadow }) {
     : (input.type === "color")
     ? <ShadowColorPicker
       key={index}
-      inputData={shadow.inputs[index]} //A revoir !!! pourquoi inputs avec [index] ? ca vient d'où ?
+      inputData={shadow.inputs[index]}
       shadowID ={shadow.id}
       />
     : null
@@ -26,8 +35,8 @@ function Shadow({ panelNumber, shadow }) {
 
 
   return (
-      <li className="py-4 px-6 border-b bg-gray-50 border-gray-300">
-        <button onClick={() => setToggleShadow(!toggleShadow)} className="flex justify-between">
+      <li className="border-b bg-gray-50 border-gray-300">
+        <button onClick={() => setToggleShadow(!toggleShadow)} className="py-4 px-6 w-full flex justify-between items-center hover:bg-gray-100">
           <span>Shadow {panelNumber}</span>
           <img className={`w-4 font-bold ${toggleShadow ? 'rotate-90' : ''}`} src={chevron} alt="arrow" />
         </button>
@@ -36,11 +45,14 @@ function Shadow({ panelNumber, shadow }) {
             <div className="flex items-end px-6 py-4">
               {/* <CheckBox /> */}
               {/* <CheckBox /> */}
-              <button className="ml-auto text-sm bg-red-600 text-slate-100 hover:bg-red-700 py-2 px-3 rounded">
+              <button
+              className="ml-auto text-sm bg-red-600 text-slate-100 hover:bg-red-700 py-2 px-3 rounded"
+              onClick={() => dispatch(removeShadow(shadow.id))}
+              >
                 Remove
               </button>
             </div>
-            <div>
+            <div className="px-6 py-4">
               {shadowInputs}
             </div>
           </>}

@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import shadowReducer from "./features/shadowSlice";
+import shadowsReducer from "./features/shadowsSlice";
 import boxSliceReducer from "./features/boxSlice";
 
 export const store = configureStore({
   reducer: {
-    shadow: shadowReducer,
+    shadows: shadowsReducer,
     box: boxSliceReducer,
   }
 });

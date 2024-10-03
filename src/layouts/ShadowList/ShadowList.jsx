@@ -1,13 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import Shadow from "./Shadow";
-import { addShadow } from "../../features/shadowSlice";
+import { addShadow } from "../../features/shadowsSlice";
 import { nanoid } from "nanoid";
 
 export default function ShadowList() {
 
-  const shadows = useSelector(state => state.shadow);
-  console.log(shadows);
-  
+  const shadows = useSelector(state => state.shadows);
   const dispatch = useDispatch();
 
   return (

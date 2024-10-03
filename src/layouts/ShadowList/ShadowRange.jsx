@@ -1,4 +1,5 @@
-export default function ShadowRange() {
+export default function ShadowRange({ inputData }) {
+
   return (
     <div>ShadowRange</div>
   )
