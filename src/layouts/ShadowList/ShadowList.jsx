@@ -11,7 +11,7 @@ export default function ShadowList() {
   return (
     <div>
       <div className="flex justify-between p-6 border-b border-gray-300">
-        <h2 className="font-bold mb-4 text-lg my-2">Customize Shadows</h2>
+        <h2 className="font-bold mb-2 text-lg my-2">Customize Shadows</h2>
         <button
         className="bg-blue-600 hover:bg-blue-700 text-slate-100 px-3 py-1 text-sm rounded h-[40px] focus:outline-none focus:ring-4 focus:ring-offset-2"
         onClick={() => dispatch(addShadow())}
