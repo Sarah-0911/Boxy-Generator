@@ -47,8 +47,7 @@ function Shadow({ panelNumber, shadow }) {
               <ShadowCheckbox name={"inset"} shadowID={shadow.id} />
               <button
               className="ml-auto text-sm bg-red-600 text-slate-100 hover:bg-red-700 py-2 px-3 rounded"
-              onClick={() => dispatch(removeShadow(shadow.id))}
-              >
+              onClick={() => dispatch(removeShadow(shadow.id))}>
                 Remove
               </button>
             </div>
